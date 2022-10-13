@@ -1,0 +1,3 @@
+displayName = The House Of Wisdom
+author = Unariginal
+version = 0.1
