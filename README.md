@@ -1,0 +1,2 @@
+# HouseOfWisdom
+A Terraria Mod.
