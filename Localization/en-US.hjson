@@ -1,0 +1,73 @@
+﻿Mods: {
+	HouseOfWisdom: {
+		NPCName: {
+			Overseer: Overseer
+			Shapeshifter: Shapeshifter
+			FavoredOne: Favored One
+			LostChild: Lost Child
+		}
+		
+		TownNPCMood: {
+			Overseer: {
+				Content: "Content"
+				NoHome: "No Home"
+				LoveSpace: "Good Space"
+				FarFromHome: "Far From Home"
+				DislikeCrowded: "Bad Crowd"
+				HateCrowded: "Horrible Crowd"
+				LikeBiome: "{BiomeName} Good Biome"
+				DislikeBiome: "{BiomeName} Bad Biome"
+				HateBiome: "{BiomeName} Horrible Biome"
+				LikeNPC: "{NPCName} Good"
+				LoveNPC: "{NPCName} Great"
+				DislikeNPC: "{NPCName} Bad"
+				HateNPC: "{NPCName} Horrible"
+			}
+			Shapeshifter: {
+				Content: "Content"
+				NoHome: "No Home"
+				LoveSpace: "Good Space"
+				FarFromHome: "Far From Home"
+				DislikeCrowded: "Bad Crowd"
+				HateCrowded: "Horrible Crowd"
+				LikeBiome: "{BiomeName} Good Biome"
+				DislikeBiome: "{BiomeName} Bad Biome"
+				HateBiome: "{BiomeName} Horrible Biome"
+				LikeNPC: "{NPCName} Good"
+				LoveNPC: "{NPCName} Great"
+				DislikeNPC: "{NPCName} Bad"
+				HateNPC: "{NPCName} Horrible"
+			}
+			FavoredOne: {
+				Content: "Content"
+				NoHome: "No Home"
+				LoveSpace: "Good Space"
+				FarFromHome: "Far From Home"
+				DislikeCrowded: "Bad Crowd"
+				HateCrowded: "Horrible Crowd"
+				LikeBiome: "{BiomeName} Good Biome"
+				DislikeBiome: "{BiomeName} Bad Biome"
+				HateBiome: "{BiomeName} Horrible Biome"
+				LikeNPC: "{NPCName} Good"
+				LoveNPC: "{NPCName} Great"
+				DislikeNPC: "{NPCName} Bad"
+				HateNPC: "{NPCName} Horrible"
+			}
+			LostChild: {
+				Content: "Content"
+				NoHome: "No Home"
+				LoveSpace: "Good Space"
+				FarFromHome: "Far From Home"
+				DislikeCrowded: "Bad Crowd"
+				HateCrowded: "Horrible Crowd"
+				LikeBiome: "{BiomeName} Good Biome"
+				DislikeBiome: "{BiomeName} Bad Biome"
+				HateBiome: "{BiomeName} Horrible Biome"
+				LikeNPC: "{NPCName} Good"
+				LoveNPC: "{NPCName} Great"
+				DislikeNPC: "{NPCName} Bad"
+				HateNPC: "{NPCName} Horrible"
+			}
+		}
+	}
+}

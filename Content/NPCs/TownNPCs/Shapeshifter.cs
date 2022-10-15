@@ -14,15 +14,12 @@ using Terraria.Utilities;
 namespace HouseOfWisdom.Content.NPCs.TownNPCs
 {
     [AutoloadHead]
-    public class Kyouko : ModNPC
+    public class Shapeshifter : ModNPC
     {
         public int NumberOfTimesTalkedTo = 0;
 
         public override void SetStaticDefaults()
         {
-            // Note: Replace DisplayName in localization files
-            DisplayName.SetDefault("Kyouko");
-            
             Main.npcFrameCount[Type] = 25; // The amount of frames the NPC has
 
             NPCID.Sets.ExtraFramesCount[Type] = 9; // Generally for Town NPCs, but this is how the NPC does extra things such as sitting in a chair and talking to other NPCs.
@@ -49,10 +46,10 @@ namespace HouseOfWisdom.Content.NPCs.TownNPCs
             NPC.Happiness
                 .SetBiomeAffection<ForestBiome>(AffectionLevel.Like) // Example Person prefers the forest.
                 .SetBiomeAffection<SnowBiome>(AffectionLevel.Dislike) // Example Person dislikes the snow.
-                //.SetBiomeAffection<ExampleSurfaceBiome>(AffectionLevel.Love) // Example Person likes the Example Surface Biome
-                //.SetNPCAffection(NPCID.Dryad, AffectionLevel.Love) // Loves living near the dryad.
+                                                                      //.SetBiomeAffection<ExampleSurfaceBiome>(AffectionLevel.Love) // Example Person likes the Example Surface Biome
+                                                                      //.SetNPCAffection(NPCID.Dryad, AffectionLevel.Love) // Loves living near the dryad.
                 .SetNPCAffection(NPCID.Guide, AffectionLevel.Like) // Likes living near the guide.
-                //.SetNPCAffection(NPCID.Merchant, AffectionLevel.Dislike) // Dislikes living near the merchant.
+                                                                   //.SetNPCAffection(NPCID.Merchant, AffectionLevel.Dislike) // Dislikes living near the merchant.
                 .SetNPCAffection(NPCID.Demolitionist, AffectionLevel.Love) // Hates living near the demolitionist.
             ;
         }
@@ -118,7 +115,7 @@ namespace HouseOfWisdom.Content.NPCs.TownNPCs
                     continue;
                 }
 
-                // Condition will be to discover Kyouko in the HOW dimension.
+                // Condition will be to defeat the Shapeshifter
                 if (numTownNPCs >= 1)
                 {
                     return true;
@@ -130,13 +127,13 @@ namespace HouseOfWisdom.Content.NPCs.TownNPCs
 
         public override ITownNPCProfile TownNPCProfile()
         {
-            return new KyoukoProfile();
+            return new ShapeshifterProfile();
         }
 
         public override List<string> SetNPCNameList()
         {
             return new List<string>() {
-                "Kyouko"
+                "???"
             };
         }
 
@@ -150,15 +147,13 @@ namespace HouseOfWisdom.Content.NPCs.TownNPCs
             //    chat.Add(Language.GetTextValue("Mods.ExampleMod.Dialogue.ExamplePerson.PartyGirlDialogue", Main.npc[partyGirl].GivenName));
             //}
             // These are things that the NPC has a chance of telling you when you talk to it.
-            chat.Add("Come visit the House of Wisdom!");
-            chat.Add("Fire!", 5.0);
-            chat.Add("Die", 0.1);
+            chat.Add("???");
 
             NumberOfTimesTalkedTo++;
             if (NumberOfTimesTalkedTo >= 10)
             {
-                //This counter is linked to a single instance of the NPC, so if ExamplePerson is killed, the counter will reset.
-                chat.Add("Wouldn't you rather be shiny?");
+                //This counter is linked to a single instance of the NPC, so if the NPC is killed, the counter will reset.
+                chat.Add("Maybe you'll learn my name.. someday");
             }
 
             return chat; // chat is implicitly cast to a string.
@@ -168,10 +163,10 @@ namespace HouseOfWisdom.Content.NPCs.TownNPCs
         {
             button = "Shop";
 
-            if (Main.LocalPlayer.HasBuff(BuffID.Shine))
-            {
-                button2 = "Travel";
-            }
+            //if (Main.LocalPlayer.HasBuff(BuffID.Shine))
+            //{
+            //    button2 = "Travel";
+            //}
         }
 
         public override void OnChatButtonClicked(bool firstButton, ref bool shop)
@@ -179,15 +174,12 @@ namespace HouseOfWisdom.Content.NPCs.TownNPCs
             if (firstButton)
             {
                 shop = true;
-            } else
-            {
-                // Teleport player to HOW dimension.
             }
         }
 
         public override void ModifyNPCLoot(NPCLoot npcLoot)
         {
-            // npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Key>())); // Will drop a special key
+            // Dunno yet
         }
 
         // Make this Town NPC teleport to the King and/or Queen statue when triggered.
@@ -207,8 +199,8 @@ namespace HouseOfWisdom.Content.NPCs.TownNPCs
 
         public override void TownNPCAttackProj(ref int projType, ref int attackDelay)
         {
-             	projType = ProjectileID.Fireball;
-             	attackDelay = 1;
+            projType = ProjectileID.ShadowFlame;
+            attackDelay = 1;
         }
 
         public override void TownNPCAttackProjSpeed(ref float multiplier, ref float gravityCorrection, ref float randomOffset)
@@ -228,7 +220,7 @@ namespace HouseOfWisdom.Content.NPCs.TownNPCs
         }
     }
 
-    public class KyoukoProfile : ITownNPCProfile
+    public class ShapeshifterProfile : ITownNPCProfile
     {
         public int RollVariation() => 0;
         public string GetNameForVariant(NPC npc) => npc.getNewNPCName();
@@ -236,14 +228,14 @@ namespace HouseOfWisdom.Content.NPCs.TownNPCs
         public Asset<Texture2D> GetTextureNPCShouldUse(NPC npc)
         {
             if (npc.IsABestiaryIconDummy && !npc.ForcePartyHatOn)
-                return ModContent.Request<Texture2D>("HouseOfWisdom/Content/NPCs/TownNPCs/Kyouko");
-            
+                return ModContent.Request<Texture2D>("HouseOfWisdom/Content/NPCs/TownNPCs/Overseer");
+
             if (npc.altTexture == 1)
-                return ModContent.Request<Texture2D>("HouseOfWisdom/Content/NPCs/TownNPCs/Kyouko_Party");
-            
-            return ModContent.Request<Texture2D>("HouseOfWisdom/Content/NPCs/TownNPCs/Kyouko");
+                return ModContent.Request<Texture2D>("HouseOfWisdom/Content/NPCs/TownNPCs/Overseer_Party");
+
+            return ModContent.Request<Texture2D>("HouseOfWisdom/Content/NPCs/TownNPCs/Overseer");
         }
 
-        public int GetHeadTextureIndex(NPC npc) => ModContent.GetModHeadSlot("HouseOfWisdom/Content/NPCs/TownNPCs/Kyouko_Head");
+        public int GetHeadTextureIndex(NPC npc) => ModContent.GetModHeadSlot("HouseOfWisdom/Content/NPCs/TownNPCs/Overseer_Head");
     }
 }
