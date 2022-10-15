@@ -228,14 +228,14 @@ namespace HouseOfWisdom.Content.NPCs.TownNPCs
         public Asset<Texture2D> GetTextureNPCShouldUse(NPC npc)
         {
             if (npc.IsABestiaryIconDummy && !npc.ForcePartyHatOn)
-                return ModContent.Request<Texture2D>("HouseOfWisdom/Content/NPCs/TownNPCs/Overseer");
+                return ModContent.Request<Texture2D>("HouseOfWisdom/Content/NPCs/TownNPCs/Shapeshifter");
 
             if (npc.altTexture == 1)
-                return ModContent.Request<Texture2D>("HouseOfWisdom/Content/NPCs/TownNPCs/Overseer_Party");
+                return ModContent.Request<Texture2D>("HouseOfWisdom/Content/NPCs/TownNPCs/Shapeshifter_Party");
 
-            return ModContent.Request<Texture2D>("HouseOfWisdom/Content/NPCs/TownNPCs/Overseer");
+            return ModContent.Request<Texture2D>("HouseOfWisdom/Content/NPCs/TownNPCs/Shapeshifter");
         }
 
-        public int GetHeadTextureIndex(NPC npc) => ModContent.GetModHeadSlot("HouseOfWisdom/Content/NPCs/TownNPCs/Overseer_Head");
+        public int GetHeadTextureIndex(NPC npc) => ModContent.GetModHeadSlot("HouseOfWisdom/Content/NPCs/TownNPCs/Shapeshifter_Head");
     }
 }
